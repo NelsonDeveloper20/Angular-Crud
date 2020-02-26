@@ -32,7 +32,7 @@
 <td>
     <a class="btn btn-primary" [routerLink]="['/usuario/edit/',user.idUsuario]" style="color: white;">Editar</a>
     <a class="btn btn-danger" (click)="eliminarUsuario(user.idUsuario)" style="color: white;">Eliminar</a>
-    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#myModal" class="btn btn-dark" style="color: white;">Detalle</a>
+    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#ModalPerfil" class="btn btn-dark" style="color: white;">Detalle</a>
 </td> 
 </tr>
 </tbody>
@@ -40,13 +40,13 @@
 </div>
 </div>
 
-<div class="modal" id="myModal">
+<div class="modal" id="ModalPerfil">
     <div class="modal-dialog">
       <div class="modal-content">
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Perfil Usuario</h4>
+          <h4 class="modal-title">Perfil {{Nombre}}</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
   
