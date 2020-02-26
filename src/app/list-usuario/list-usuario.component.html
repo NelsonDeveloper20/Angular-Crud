@@ -1,0 +1,79 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Lista Usuarios</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/add-usuario']">
+            Nuevo
+        </a>
+<table class="table table-hover">
+<thead>
+    <tr>
+ <td>ID</td>
+ <td>Nombre</td>
+ <td>Apellido</td>
+ <td>Email</td>
+ <td>Imagen</td>
+ <td>Tipo Usuario</td>
+ <td>Accion</td>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let user of usuario">
+<td>{{user.idUsuario}}</td>
+<td>{{user.Nombre}}</td>
+<td>{{user.Apellido}}</td>
+<td>{{user.Email}}</td>
+<td><img src="{{user.Imagen}}" style="width: 60px;height: auto;"/></td>
+<td>{{user.idTipoUsuario}}</td>
+<td>
+    <a class="btn btn-primary" [routerLink]="['/usuario/edit/',user.idUsuario]" style="color: white;">Editar</a>
+    <a class="btn btn-danger" (click)="eliminarUsuario(user.idUsuario)" style="color: white;">Eliminar</a>
+    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#myModal" class="btn btn-dark" style="color: white;">Detalle</a>
+</td> 
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Perfil Usuario</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">           
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+          <div class="px-4 pt-0 pb-4">
+              <div class="media align-items-end profile-header"><br>
+                  <div class="profile mr-3"><img [src]="Imagen"   alt="..." width="200" class="rounded mb-2 img-thumbnail">
+                    <span class="btn btn-dark btn-sm btn-block">{{Nombre}}</span></div>
+                  <div class="media-body mb-5">
+                      <p class="mt-0 mb-0">{{Nombre}}</p>
+                      <p class="mt-0 mb-0">{{Apellido}}</p> 
+                      <p class="mt-0 mb-0">{{Email}}</p> 
+                  </div>
+              </div>
+          </div>
+ 
+      </div><!-- End profile widget -->
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

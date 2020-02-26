@@ -1,0 +1,44 @@
+
+
+
+<div>
+    <p>nombre: {{name}}</p>
+    <p>edad: {{edad}}</p>
+    <p>direccion:{{direccion.direcc}} </p>
+    <p>ciudad:{{direccion.ciudad}}</p>
+    <ul>
+        <li *ngFor="let hobby of hobbies">
+{{hobby}}
+        </li>
+    </ul>
+</div>
+<h1 style="color: brown;">EVENTOS</h1>
+
+<form (submit)="agregarusuario(newUser)">
+    <input type="text" #newUser>
+    
+    <button>ADD</button>
+</form >
+
+<ul>
+    <li *ngFor="let user of usuarios">
+{{user}}
+
+<button class="btn btn-primary" (click)="eliminar(user)">
+    Click me!!
+</button>
+    </li>
+</ul>
+<h1 style="color: chartreuse;">UPDATE</h1>
+<form>
+    <input type="text" name="name" [(ngModel)]="name">
+     <input type="text" name="edad" [(ngModel)]="edad">
+     <br>
+nombre:{{name}}
+edad:{{edad}}
+</form>
+<hr>
+<div *ngFor="let pos of posts">
+    <h3>{{pos.title}}</h3>
+     <p>{{pos.body}}</p>
+</div>
