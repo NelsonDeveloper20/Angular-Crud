@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild,OnInit, ElementRef } from '@angular/core';
 import{UsuarioService} from '../services/usuario.service';
 import{ Usuario} from '../models/usuario.model';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { strict } from 'assert';
+import {   FormBuilder } from '@angular/forms';
+ 
+declare var $;
 @Component({
   selector: 'app-list-usuario',
   templateUrl: './list-usuario.component.html',
   styleUrls: ['./list-usuario.component.css']
 })
-export class ListUsuarioComponent implements OnInit {
-
+export class ListUsuarioComponent implements OnInit { 
+ 
+   
   usuario:Usuario[]; 
-   Nombre :String=null;
+  Nombre :String=null;
   Apellido  :String=null;
   Email  :String=null;
   Clave  :String=null;
@@ -19,16 +21,16 @@ export class ListUsuarioComponent implements OnInit {
   idTipoUsuario :String=null;
   constructor(private _fb:FormBuilder,private service:UsuarioService) { 
 
-     
-       
-     
     
   }
+  
 
   ngOnInit(): void {
-    this.listarUsuario();
+   
+      this.listarUsuario();  
+       
   }
-
+  
   listarUsuario(){
     return this.service.listarUsuario().subscribe(
       data=>{

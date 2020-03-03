@@ -1,4 +1,4 @@
-
+ 
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -9,7 +9,7 @@
         <a [routerLink]="['/add-usuario']">
             Nuevo
         </a>
-<table class="table table-hover">
+<table  #dataTable class="table table-hover" id="tableUsers">
 <thead>
     <tr>
  <td>ID</td>
@@ -32,7 +32,16 @@
 <td>
     <a class="btn btn-primary" [routerLink]="['/usuario/edit/',user.idUsuario]" style="color: white;">Editar</a>
     <a class="btn btn-danger" (click)="eliminarUsuario(user.idUsuario)" style="color: white;">Eliminar</a>
-    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#ModalPerfil" class="btn btn-dark" style="color: white;">Detalle</a>
+    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#ModalPerfil" class="btn btn-dark" style="color: white;">
+     Detalle</a>
+      
+      <a class="btn btn-dark btn-circle m-1" style="color: white;"><i style="margin-top: 10px;" class="material-icons">
+        more_horiz
+        </i></a>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on bottom
+</button>
 </td> 
 </tr>
 </tbody>
@@ -76,4 +85,6 @@
   
       </div>
     </div>
-  </div>
+  </div>   
+  <button type="button" class="btn btn-outline-secondary mr-2" 
+  ngbPopover="Popover content" popoverTitle="Simple Popover"> Show Popover </button>

@@ -4,7 +4,8 @@ import { FormsModule,FormGroup  }from '@angular/forms';
 import {DataService} from './data.service'
 import {HttpClientModule }from '@angular/common/http';
 import {RouterModule,Route }  from '@angular/router';
-import { AboutComponent }from './about/about.component';  
+import { AboutComponent }from './about/about.component';   
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
@@ -17,8 +18,8 @@ import { ProductoService } from './services/producto.service';
 import { AddUsuarioComponent } from './add-usuario/add-usuario.component';
 import { ListUsuarioComponent } from './list-usuario/list-usuario.component';
 import {ReactiveFormsModule }from '@angular/forms';
-import { LoginComponent } from './login/login.component';
- 
+import { LoginComponent } from './login/login.component'; 
+ //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent, 
@@ -28,16 +29,18 @@ import { LoginComponent } from './login/login.component';
     ListProductoComponent,
     AddUsuarioComponent,
     ListUsuarioComponent,
-    LoginComponent
+    LoginComponent, 
+   // NgbModule
   ],
   imports: [ReactiveFormsModule ,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    DataTablesModule,
     RouterModule.forRoot(
       [
-        {path:'',component: UsuarioComponent},
+        {path:'',component: LoginComponent},
         {path:'about',component:AboutComponent},
         {path:'tercero',component:tercerxample},
         {path:'add-producto',component:AddProductoComponent},
@@ -45,7 +48,8 @@ import { LoginComponent } from './login/login.component';
         {path:'producto/edit/:id',component:AddProductoComponent},
         {path:'list-usuario',component:ListUsuarioComponent},
         {path:'add-usuario',component:AddUsuarioComponent},
-        {path:'usuario/edit/:id',component:AddUsuarioComponent}
+        {path:'usuario/edit/:id',component:AddUsuarioComponent},
+        {path: 'login',component: LoginComponent}
         
       ]
     )
