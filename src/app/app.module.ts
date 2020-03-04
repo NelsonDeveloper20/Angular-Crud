@@ -6,7 +6,11 @@ import {HttpClientModule }from '@angular/common/http';
 import {RouterModule,Route }  from '@angular/router';
 import { AboutComponent }from './about/about.component';   
 import { DataTablesModule } from 'angular-datatables';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { NgxPopper } from 'angular-popper';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
 import {tercerxample} from './tercero/tercero.component';
@@ -35,9 +39,14 @@ import { LoginComponent } from './login/login.component';
   imports: [ReactiveFormsModule ,
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     FormsModule,
     HttpClientModule,
     DataTablesModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    }),
+    NgxPopper,
     RouterModule.forRoot(
       [
         {path:'',component: LoginComponent},

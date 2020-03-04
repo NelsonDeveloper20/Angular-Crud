@@ -1,4 +1,5 @@
- 
+ <!--POPUPVER CONFIRMATION INSTALL: npm install --save angular-confirmation-popover-->
+ <!--POPOVER https://www.freakyjolly.com/angular-ng-bootstrap-popover-tutorial-by-example/ -->
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -6,9 +7,14 @@
         </div>
     </div>
     <div class="card-body">
+     
+
         <a [routerLink]="['/add-usuario']">
             Nuevo
-        </a>
+        </a> 
+        
+ 
+        
 <table  #dataTable class="table table-hover" id="tableUsers">
 <thead>
     <tr>
@@ -30,18 +36,30 @@
 <td><img src="{{user.Imagen}}" style="width: 60px;height: auto;"/></td>
 <td>{{user.idTipoUsuario}}</td>
 <td>
-    <a class="btn btn-primary" [routerLink]="['/usuario/edit/',user.idUsuario]" style="color: white;">Editar</a>
-    <a class="btn btn-danger" (click)="eliminarUsuario(user.idUsuario)" style="color: white;">Eliminar</a>
-    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#ModalPerfil" class="btn btn-dark" style="color: white;">
+   
+    <a class="btn btn-danger" 
+    mwlConfirmationPopover
+    [popoverTitle]="popoverTitle"
+    [popoverMessage]="popoverMessage"
+    placement="left"
+    (confirm)="eliminarUsuario(user.idUsuario)"
+    (cancel)="cancelClicked = true"  style="color: white;">Eliminar</a>
+    <a data-toggle="modal" (click)="usarioPorId(user.idUsuario)" data-target="#ModalPerfil" class="btn btn-primary" style="color: white;">
      Detalle</a>
       
-      <a class="btn btn-dark btn-circle m-1" style="color: white;"><i style="margin-top: 10px;" class="material-icons">
+     <ng-template #popContent>
+   <a class="btn btn-sm"> Eliminar <i class="material-icons"> delete_forever   </i></a><br>
+   <a class="btn btn-sm" [routerLink]="['/usuario/edit/',user.idUsuario]"> Editar <i class="material-icons"> create </i></a><br>
+   <a class="btn btn-sm" data-toggle="modal" data-target="#ModalAuditoria">Auditoria <i class="material-icons"> supervisor_account  </i></a>
+      </ng-template>  
+      <a class="btn btn-dark btn-circle m-1" [ngbPopover]="popContent" placement="bottom" style="color: white;"><i style="margin-top: 10px;" class="material-icons">
         more_horiz
         </i></a>
-        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on bottom
-</button>
+       
+       <!-- <button type="button" class="btn btn-outline-secondary mr-2"
+         ngbPopover="Popover content" popoverTitle="Simple Popover"> 
+          Show Popover </button>
+      --> 
 </td> 
 </tr>
 </tbody>
@@ -85,6 +103,33 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   
       </div>
     </div>
-  </div>   
-  <button type="button" class="btn btn-outline-secondary mr-2" 
-  ngbPopover="Popover content" popoverTitle="Simple Popover"> Show Popover </button>
+</div>  
+
+  <!--POPUP AUDITORIA -->
+  <div class="modal" id="ModalAuditoria">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Auditoria</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">           
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+          
+ 
+      </div><!-- End profile widget -->
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>  

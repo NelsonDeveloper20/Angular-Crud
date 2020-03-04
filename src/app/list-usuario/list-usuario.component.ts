@@ -11,7 +11,11 @@ declare var $;
 })
 export class ListUsuarioComponent implements OnInit { 
  
-   
+  public popoverTitle: string = 'Mensaje';
+  public popoverMessage: string = 'Eliminar Usuario?';
+  public confirmClicked: boolean = false;
+  public cancelClicked: boolean = false;
+
   usuario:Usuario[]; 
   Nombre :String=null;
   Apellido  :String=null;
@@ -29,8 +33,8 @@ export class ListUsuarioComponent implements OnInit {
    
       this.listarUsuario();  
        
-  }
-  
+  } 
+
   listarUsuario(){
     return this.service.listarUsuario().subscribe(
       data=>{
@@ -38,12 +42,14 @@ export class ListUsuarioComponent implements OnInit {
     });
   }
   eliminarUsuario(id){
-const delet=confirm('Eliminar Usuario:'+id);
-if(delet){
+//const delet=confirm('Eliminar Usuario:'+id);
+//if(delet){
+
   this.service.eliminarUsuario(id).subscribe(() =>{
 this.listarUsuario();
 }, Error => console.error(Error));
-}
+
+//}
 }
 
 usarioPorId(id){
