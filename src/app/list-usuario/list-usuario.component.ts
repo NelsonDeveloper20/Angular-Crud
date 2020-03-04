@@ -15,7 +15,9 @@ export class ListUsuarioComponent implements OnInit {
   public popoverMessage: string = 'Eliminar Usuario?';
   public confirmClicked: boolean = false;
   public cancelClicked: boolean = false;
-
+  dataTable: any;
+  dtOptions: any;
+  @ViewChild('dataTable', {static: false}) table: ElementRef; 
   usuario:Usuario[]; 
   Nombre :String=null;
   Apellido  :String=null;
@@ -32,7 +34,8 @@ export class ListUsuarioComponent implements OnInit {
   ngOnInit(): void {
    
       this.listarUsuario();  
-       
+      this.dataTable = $(this.table.nativeElement);
+      this.dataTable.DataTable();
   } 
 
   listarUsuario(){

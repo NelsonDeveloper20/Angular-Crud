@@ -4,11 +4,12 @@ import { FormsModule,FormGroup  }from '@angular/forms';
 import {DataService} from './data.service'
 import {HttpClientModule }from '@angular/common/http';
 import {RouterModule,Route }  from '@angular/router';
-import { AboutComponent }from './about/about.component';   
-import { DataTablesModule } from 'angular-datatables';
+import { AboutComponent }from './about/about.component';    
 import 'bootstrap/dist/css/bootstrap.css';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgxPopper } from 'angular-popper';
+import { DataTablesModule } from 'angular-datatables';
+
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { AppRoutingModule } from './app-routing.module';
